@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View } from "../Themed";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, Pressable } from "react-native";
 import {
   AntDesign,
   Feather,
+  Ionicons,
   MaterialCommunityIcons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
 
 const MessageInput = () => {
+  const [message, setMessage] = useState("");
+
+  const sendMessage = () => {
+    console.warn("Sending Message", message);
+    setMessage("");
+  };
+
+  const onPlusClicked = () => {
+    console.warn("On plus clicked");
+  };
+
+  const onPress = () => {
+    if (message) {
+      sendMessage();
+    } else {
+      onPlusClicked();
+    }
+  };
+
   return (
     <View style={styles.root}>
       <View style={styles.inputContainer}>
         <SimpleLineIcons name="emotsmile" size={24} style={styles.icon} />
-        <TextInput placeholder="Utalk Here" style={styles.input} />
+        <TextInput
+          style={styles.input}
+          value={message}
+          onChangeText={setMessage}
+          placeholder="Utalk message..."
+        />
         <Feather name="camera" size={24} style={styles.icon} />
         <MaterialCommunityIcons
           name="microphone-outline"
@@ -21,9 +46,13 @@ const MessageInput = () => {
           style={styles.icon}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <AntDesign name="plus" size={24} color={"white"} />
-      </View>
+      <Pressable style={styles.buttonContainer} onPress={onPress}>
+        {message ? (
+          <Ionicons name="send" size={24} color={"white"} />
+        ) : (
+          <AntDesign name="plus" size={24} color={"white"} />
+        )}
+      </Pressable>
     </View>
   );
 };
@@ -31,6 +60,7 @@ const MessageInput = () => {
 const styles = StyleSheet.create({
   root: {
     flexDirection: "row",
+    padding: 5,
   },
   inputContainer: {
     backgroundColor: "#f2f2f2",
