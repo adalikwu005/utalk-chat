@@ -3,25 +3,29 @@ import { Text, View } from "../Themed";
 import { Image } from "react-native";
 import styles from "./styles";
 
-export default function ChatRoomItem() {
+export default function ChatRoomItem({ chatRoom }) {
+  const user = chatRoom.users[1];
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: "https://avatars.githubusercontent.com/u/57404619?v=4",
+          uri: user.imageUri,
         }}
         style={styles.image}
       />
-      <View style={styles.badgeContainer}>
-        <Text style={styles.badgeText}>4</Text>
-      </View>
+      {chatRoom.newMessages && (
+        <View style={styles.badgeContainer}>
+          <Text style={styles.badgeText}>{chatRoom.newMessages}</Text>
+        </View>
+      )}
+
       <View style={styles.rightcontainer}>
         <View style={styles.row}>
-          <Text style={styles.name}>Michael Adalikwu</Text>
-          <Text style={styles.text}>11:11 AM</Text>
+          <Text style={styles.name}>{user.name}</Text>
+          <Text style={styles.text}>{chatRoom.lastMessage.createdAt}</Text>
         </View>
         <Text numberOfLines={1} style={styles.text}>
-          Hello from Michael
+          {chatRoom.lastMessage.content}
         </Text>
       </View>
     </View>
