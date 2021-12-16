@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import { Text, View } from "../components/Themed";
+import { Text, View as SafeAreaView } from "../components/Themed";
 import { FlatList, StyleSheet } from "react-native";
 import Message from "../components/Message";
 import chatRoomData from "../assets/dummy-data/Chats";
+import MessageInput from "../components/MessageInput/MessageInput";
 
 export default class ChatRoomScreen extends Component {
   render() {
     return (
-      <View style={styles.page}>
+      <SafeAreaView style={styles.page}>
         <FlatList
           data={chatRoomData.messages}
           renderItem={({ item }) => <Message message={item} />}
           inverted
         />
-      </View>
+        <MessageInput />
+      </SafeAreaView>
     );
   }
 }
