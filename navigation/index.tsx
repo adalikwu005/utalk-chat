@@ -1,4 +1,8 @@
-import { FontAwesome } from "@expo/vector-icons";
+import {
+  Feather,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -6,7 +10,13 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Image, Pressable, StyleSheet } from "react-native";
+import {
+  ColorSchemeName,
+  Image,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+} from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -49,7 +59,10 @@ function RootNavigator() {
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoomScreen}
-        options={{ headerShown: true }}
+        options={{
+          headerTitle: ChatRoomHeader,
+          headerBackTitleVisible: false,
+        }}
       />
 
       <Stack.Screen
@@ -65,13 +78,94 @@ function RootNavigator() {
 }
 
 const HomeHeader = (props) => {
+  const { width } = useWindowDimensions();
+
   return (
-    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width,
+        padding: 10,
+        paddingRight: 20,
+      }}
+    >
       <Image
         style={{ width: 30, height: 30, borderRadius: 30 }}
         source={{ uri: "https://avatars.githubusercontent.com/u/57404619?v=4" }}
       />
-      <Text>Utalk</Text>
+      <Text
+        style={{
+          flex: 1,
+          textAlign: "center",
+          marginLeft: 40,
+          fontWeight: "bold",
+          fontSize: 18,
+        }}
+      >
+        Utalk
+      </Text>
+      <View style={{ flexDirection: "row" }}>
+        <Feather
+          name="camera"
+          size={24}
+          color={"black"}
+          style={{ marginHorizontal: 10, padding: 5 }}
+        />
+        <Feather
+          name="edit-2"
+          size={24}
+          color={"black"}
+          style={{ marginHorizontal: 10, padding: 5 }}
+        />
+      </View>
+    </View>
+  );
+};
+
+const ChatRoomHeader = (props) => {
+  const { width } = useWindowDimensions();
+
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: width - 50,
+        padding: 10,
+        marginLeft: -30,
+      }}
+    >
+      <Image
+        style={{ width: 30, height: 30, borderRadius: 30, marginRight: 10 }}
+        source={{ uri: "https://avatars.githubusercontent.com/u/57404619?v=4" }}
+      />
+      <Text
+        style={{
+          flex: 1,
+          marginLeft: 0,
+          fontWeight: "bold",
+          fontSize: 18,
+        }}
+      >
+        {props.children}
+      </Text>
+      <View style={{ flexDirection: "row" }}>
+        <Feather
+          name="camera"
+          size={24}
+          color={"black"}
+          style={{ marginHorizontal: 5, padding: 5 }}
+        />
+        <Feather
+          name="edit-2"
+          size={24}
+          color={"black"}
+          style={{ marginHorizontal: 5, padding: 5 }}
+        />
+      </View>
     </View>
   );
 };

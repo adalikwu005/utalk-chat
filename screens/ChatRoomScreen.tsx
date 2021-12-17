@@ -4,12 +4,15 @@ import { FlatList, StyleSheet } from "react-native";
 import Message from "../components/Message";
 import chatRoomData from "../assets/dummy-data/Chats";
 import MessageInput from "../components/MessageInput/MessageInput";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function ChatRoomScreen() {
   const route = useRoute();
+  const navigation = useNavigation();
 
   console.warn("Displaying Chat room", route.params?.id);
+
+  navigation.setOptions({ title: "Adalikwu Michael" });
 
   return (
     <SafeAreaView style={styles.page}>
