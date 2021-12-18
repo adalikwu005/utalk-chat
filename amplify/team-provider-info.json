@@ -9,11 +9,18 @@
       "UnauthRoleName": "amplify-utalkchat-staging-155020-unauthRole",
       "StackName": "amplify-utalkchat-staging-155020",
       "StackId": "arn:aws:cloudformation:us-east-1:564272261022:stack/amplify-utalkchat-staging-155020/0a511b40-5f51-11ec-b27b-0e774d02f957",
-      "AmplifyAppId": "d2rbu3ebp3x796"
+      "AmplifyAppId": "d2rbu3ebp3x796",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-utalkchat-staging-155020-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
         "Utalkchat": {}
+      },
+      "function": {
+        "UtalkchatPostConfirmation": {
+          "deploymentBucketName": "amplify-utalkchat-staging-155020-deployment",
+          "s3Key": "amplify-builds/UtalkchatPostConfirmation-533733314542494a314f-build.zip"
+        }
       }
     }
   }

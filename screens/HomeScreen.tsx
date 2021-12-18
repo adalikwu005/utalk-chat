@@ -18,10 +18,10 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
       />
 
-      <Pressable
+      {/* <Pressable
         onPress={logOut}
         style={{
-          backgroundColor: "red",
+          backgroundColor: "orange",
           height: 50,
           margin: 10,
           borderRadius: 25,
@@ -30,7 +30,7 @@ export default function HomeScreen() {
         }}
       >
         <Text>Logout</Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 }
