@@ -10,7 +10,7 @@ export default function ChatRoomScreen() {
   const route = useRoute();
   const navigation = useNavigation();
 
-  console.warn("Displaying Chat room", route.params?.id);
+  console.log("Displaying Chat room", route.params?.id);
 
   navigation.setOptions({ title: "Adalikwu Michael" });
 
