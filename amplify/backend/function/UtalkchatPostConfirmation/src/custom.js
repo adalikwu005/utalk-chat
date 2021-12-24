@@ -32,6 +32,7 @@ exports.handler = async (event) => {
 
   try {
     await ddb.putItem(params).promise();
+    console.log("success");
   } catch (error) {
     console.log(error);
   }

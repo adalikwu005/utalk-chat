@@ -1,12 +1,9 @@
-import {
-  Feather,
-  FontAwesome,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
+  useNavigation,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
@@ -14,16 +11,13 @@ import {
   ColorSchemeName,
   Image,
   Pressable,
-  StyleSheet,
   useWindowDimensions,
 } from "react-native";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import HomeScreen from "../screens/HomeScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import UsersScreen from "../screens/UsersScreen";
 
 import ChatRoomScreen from "../screens/ChatRoomScreen";
 
@@ -66,6 +60,14 @@ function RootNavigator() {
       />
 
       <Stack.Screen
+        name="UsersScreen"
+        component={UsersScreen}
+        options={{
+          title: "Users",
+        }}
+      />
+
+      <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
@@ -79,6 +81,7 @@ function RootNavigator() {
 
 const HomeHeader = (props) => {
   const { width } = useWindowDimensions();
+  const navigation = useNavigation();
 
   return (
     <View
@@ -113,12 +116,15 @@ const HomeHeader = (props) => {
           color={"black"}
           style={{ marginHorizontal: 10, padding: 5 }}
         />
-        <Feather
-          name="edit-2"
-          size={24}
-          color={"black"}
-          style={{ marginHorizontal: 10, padding: 5 }}
-        />
+
+        <Pressable onPress={() => navigation.navigate("UsersScreen")}>
+          <Feather
+            name="edit-2"
+            size={24}
+            color={"black"}
+            style={{ marginHorizontal: 10, padding: 5 }}
+          />
+        </Pressable>
       </View>
     </View>
   );
