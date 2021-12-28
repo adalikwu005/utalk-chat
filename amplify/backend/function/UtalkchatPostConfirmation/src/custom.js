@@ -26,7 +26,7 @@ exports.handler = async (event) => {
   };
 
   const params = {
-    item: userItem,
+    Item: userItem,
     TableName: tableName,
   };
 

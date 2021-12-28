@@ -19,7 +19,7 @@
       "function": {
         "UtalkchatPostConfirmation": {
           "deploymentBucketName": "amplify-utalkchat-staging-155020-deployment",
-          "s3Key": "amplify-builds/UtalkchatPostConfirmation-533733314542494a314f-build.zip"
+          "s3Key": "amplify-builds/UtalkchatPostConfirmation-3465766a3952665a4e4f-build.zip"
         }
       }
     }
